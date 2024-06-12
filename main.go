@@ -98,16 +98,22 @@ func packHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	loadConfig()
-	if len(packSizes) == 0 {
-		fmt.Println("No pack sizes configured. Please check the config file.")
-		return
-	}
+    loadConfig()
+    if len(packSizes) == 0 {
+        fmt.Println("No pack sizes configured. Please check the config file.")
+        return
+    }
 
-	http.HandleFunc("/calculate-packs", packHandler)
-	http.Handle("/", http.FileServer(http.Dir("./static")))
-	fmt.Println("Server started at :8080")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		fmt.Println("Failed to start server:", err)
-	}
+    http.HandleFunc("/calculate-packs", packHandler)
+    http.Handle("/", http.FileServer(http.Dir("./static")))
+
+    port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080" // Default port
+    }
+
+    fmt.Println("Server started at port:", port)
+    if err := http.ListenAndServe(":"+port, nil); err != nil {
+        fmt.Println("Failed to start server:", err)
+    }
 }
