@@ -8,13 +8,6 @@ This is an application that calculates the number of packs required to fulfill a
 
 ## Usage
 
-1. **Clone the Repository**: Clone this repository to your local machine.
-
-2. **Install Dependencies**: Ensure you have Go installed on your machine.
-
-3. **Run the Application**: Start the application locally by running the following command:
-    go run main.go
-    
-4. **Access the Application**: Open your web browser and navigate to `http://localhost:8080` to access the application.
+**Access the Application**: Open your web browser and navigate to `https://packcalculator-eff03b028e14.herokuapp.com'
 
 
